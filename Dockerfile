@@ -1,4 +1,4 @@
-FROM haskell:8.8
+FROM haskell:latest
 RUN cabal update
 RUN cabal install brok
 CMD ["brok"]
