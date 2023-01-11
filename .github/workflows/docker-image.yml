@@ -28,6 +28,11 @@ jobs:
         with:
           arch: ${{ matrix.arch }}
           distro: ${{ matrix.distro }}
+          githubToken: ${{ github.token }}
           run: |
-            uname -m
-            docker build . --file Dockerfile --tag brok:$(date +%s)
+            echo ::set-output name=uname::$(uname -a)
+            # docker build . --file Dockerfile --tag brok:$(date +%s)
+            
+      - name: Get the output
+        run: |
+          echo "The uname output was ${{ steps.runcmd.outputs.uname }}"
